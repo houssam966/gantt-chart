@@ -7,7 +7,7 @@ public class GantChart {
         GantChart gantChart = new GantChart();
         int n;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter number of Process: ");
+        System.out.println("Enter number of Processes: ");
         n = sc.nextInt();
         Process[] processes = new Process[n];
 
