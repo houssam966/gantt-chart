@@ -17,5 +17,5 @@ To run Round Robin:<br>
 To run First Come First Serve:<br>
 `gantChart.firstComeFirstServe(processes);`
 
-##Output format
-![alt text](https://github.com/houssam966]/gantt-chart]/blob/public/outputScreenshot.png?raw=true)
+## Output format
+![alt text](./public/outputScreenshot.png?raw=true)
