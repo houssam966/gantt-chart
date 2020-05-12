@@ -31,14 +31,13 @@ public class GantChart {
         //OR comment out the previous section and input your processes here
         //arguments: duration, arrival, priority, id
         Process [] processes = {
-                new Process(16.0,7.0,0.0, 0),
-                new Process(17.0,19.0,0.0, 1),
-                new Process(18.0,0.0,0.0, 2),
-                new Process(5.0,6.0,0.0 , 3),
-                new Process(15.0,8.0,0.0 , 4)
+                new Process(4.0,4.0,0.0, 1),
+                new Process(10.0,0.0,0.0, 2),
+                new Process(17.0,17.0,0.0 , 3),
+                new Process(18.0,2.0,0.0 , 4)
         };
 
-        gantChart.preEmptiveShortestRemainingTimeFirst(processes);
+        gantChart.roundRobin(processes, 5);
     }
 
 
@@ -293,7 +292,8 @@ public class GantChart {
     }
 
     public void roundRobin(Process[] processes, int q) {
-        System.out.println("RUNNING ROUND ROBIN");
+        System.out.println();
+        System.out.println("RUNNING ROUND ROBIN WITH QUANTA = " + q);
 
 
         sorter.sortByArrival(processes);
