@@ -5,37 +5,38 @@ public class GantChart {
     private Double avgWaitingTime, avgTurnAroundTime, throughput;
     public static void main(String[] args){
         GantChart gantChart = new GantChart();
-//        int n;
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter number of Process: ");
-//        n = sc.nextInt();
-//        Process[] processes = new Process[n];
-//
-//        System.out.println("...Enter the process ID...");
-//        for (int i = 0; i < n; i++) {
-//            int id;
-//            double arrival,duration, priority;
-//            System.out.println("...Process " + (i + 1) + "...");
-//            System.out.println("Enter Process Id: ");
-//            id = sc.nextInt();
-//            System.out.println("Enter Arrival Time: ");
-//            arrival = sc.nextInt();
-//            System.out.println("Enter Duration Time: ");
-//            duration = sc.nextInt();
-//            System.out.println("Enter Process Priority: ");
-//            priority = sc.nextInt();
-//            processes[i] = new Process(arrival,duration, priority, id);
-//        }
+        int n;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of Process: ");
+        n = sc.nextInt();
+        Process[] processes = new Process[n];
 
-        //input your processes here
+        System.out.println("...Enter the process ID...");
+        for (int i = 0; i < n; i++) {
+            int id;
+            double arrival,duration, priority;
+            System.out.println("...Process " + (i + 1) + "...");
+            System.out.println("Enter Process Id: ");
+            id = sc.nextInt();
+            System.out.println("Enter Arrival Time: ");
+            arrival = sc.nextInt();
+            System.out.println("Enter Duration Time: ");
+            duration = sc.nextInt();
+            System.out.println("Enter Process Priority: ");
+            priority = sc.nextInt();
+            processes[i] = new Process(arrival,duration, priority, id);
+        }
+
+        //OR comment out the previous section and input your processes here
         //arguments: duration, arrival, priority, id
-        Process [] processes = {
-                new Process(16.0,7.0,0.0, 0),
-                new Process(17.0,19.0,0.0, 1),
-                new Process(18.0,0.0,0.0, 2),
-                new Process(5.0,6.0,0.0 , 3),
-                new Process(15.0,8.0,0.0 , 4)
-        };
+//        Process [] processes = {
+//                new Process(16.0,7.0,0.0, 0),
+//                new Process(17.0,19.0,0.0, 1),
+//                new Process(18.0,0.0,0.0, 2),
+//                new Process(5.0,6.0,0.0 , 3),
+//                new Process(15.0,8.0,0.0 , 4)
+//        };
+
         gantChart.preEmptiveShortestRemainingTimeFirst(processes);
     }
 
