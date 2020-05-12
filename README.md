@@ -1,4 +1,4 @@
-# gant-chart
+# Gant Chart
 Applies various scheduling algorithms to processes and produces the corresponding Gant Chart.
 ## Scheduling Algorithms included
 - FCFS
