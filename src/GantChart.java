@@ -24,7 +24,7 @@ public class GantChart {
             duration = sc.nextInt();
             System.out.println("Enter Process Priority: ");
             priority = sc.nextInt();
-            processes[i] = new Process(arrival,duration, priority, id);
+            processes[i] = new Process(duration,arrival, priority, id);
         }
 
         //OR comment out the previous section and input your processes here
