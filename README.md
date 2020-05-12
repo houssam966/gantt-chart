@@ -1,5 +1,5 @@
 # Gantt Chart
-Applies various scheduling algorithms to processes and produces the corresponding Gant Chart.
+Applies various scheduling algorithms to processes and produces the corresponding Gantt Chart.
 ## Scheduling Algorithms included
 - FCFS
 - SJF
