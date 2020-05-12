@@ -1,4 +1,4 @@
-# gant-chart
+# Gantt Chart
 Applies various scheduling algorithms to processes and produces the corresponding Gant Chart.
 ## Scheduling Algorithms included
 - FCFS
@@ -9,3 +9,10 @@ Applies various scheduling algorithms to processes and produces the correspondin
 - Round Robin
 ## Usage
 - just compile and run boi
+
+**P.S To change the algorithm used, change the last line of the main method. For example:<br><br>**
+To run Round Robin:<br>
+`gantChart.roundRobin(processes, 5); //5 is the quantum number`
+<br><br>
+To run First Come First Serve:<br>
+`gantChart.firstComeFirstServe(processes);`
