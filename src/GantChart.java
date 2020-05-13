@@ -31,13 +31,15 @@ public class GantChart {
         //OR comment out the previous section and input your processes here
         //arguments: duration, arrival, priority, id
         Process [] processes = {
-                new Process(4.0,4.0,0.0, 1),
-                new Process(10.0,0.0,0.0, 2),
-                new Process(17.0,17.0,0.0 , 3),
-                new Process(18.0,2.0,0.0 , 4)
+                new Process(5.0,7.0,1.0, 0),
+                new Process(14.0,11.0,10.0, 1),
+                new Process(13.0,15.0,14.0, 2),
+                new Process(9.0,0.0,2.0 , 3),
+                new Process(5.0,21.0,8.0 , 4)
         };
-
-                // Available Algorithms:
+        
+      
+        // Available Algorithms:
         //FCFS = firstComeFirstServe
         //SJF = shortestJobFirst
         //PESR = preEmptiveShortestRemainingTimeFirst
@@ -279,7 +281,7 @@ public class GantChart {
             for (int i = 0; i < processArrayList.size() ; i++) {
                 //process just arrived
                 if (currentTime == processArrayList.get(i).getArrival()) {
-                    if(processArrayList.get(i).getPriority() < current.getPriority()){
+                    if(processArrayList.get(i).getPriority() < current.getPriority() || current.getArrival() > currentTime){
                         //Any process that gets replaced at the beginning doesn't count as interrupted
                         if(currentTime != 0){
                             interrupted = true;
@@ -313,6 +315,7 @@ public class GantChart {
                //process finished executing
                 table.get(table.size()-1).end = currentTime;
                 processArrayList.remove(current);
+                readyQueue.remove(current);
                 if(processArrayList.size()>0){
                     current = processArrayList.get(0);
                 }
