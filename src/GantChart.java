@@ -37,8 +37,42 @@ public class GantChart {
                 new Process(9.0,0.0,2.0 , 3),
                 new Process(5.0,21.0,8.0 , 4)
         };
+        
+      
+        // Available Algorithms:
+        //FCFS = firstComeFirstServe
+        //SJF = shortestJobFirst
+        //PESR = preEmptiveShortestRemainingTimeFirst
+        //NPEP = nonPreEmptivePriority
+        //PEP = preEmptivePriority
+        //RR = roundRobin
 
-        gantChart.preEmptivePriority(processes);
+        String processName = "FCFS";
+        int quantumNumber = 5;
+
+        switch (processName) {
+            case "FCFS":
+                gantChart.firstComeFirstServe(processes);
+                break;
+            case "SJF":
+                gantChart.shortestJobFirst(processes);
+                break;
+            case "PESR":
+                gantChart.preEmptiveShortestRemainingTimeFirst(processes);
+                break;
+            case "NPEP":
+                gantChart.nonPreEmptivePriority(processes);
+                break;
+            case "PEP":
+                gantChart.preEmptivePriority(processes);
+                break;
+            case "RR":
+                gantChart.roundRobin(processes, quantumNumber);
+                break;
+            default:
+                System.out.println("Invalid Input");
+                break;
+        }
     }
 
 
