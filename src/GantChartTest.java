@@ -292,6 +292,34 @@ public class GantChartTest {
         assertEquals(gantChart.getAvgWaitingTime(),6.2);
     }
     @Test
+    public void PreEmptivePriorityFinQuizWorks() {
+        GantChart gantChart = new GantChart();
+        Process [] processes = {
+                new Process(3.0,9.0,1.0, 0),
+                new Process(4.0,3.0,4.0, 1),
+                new Process(9.0,11.0,12.0, 2),
+                new Process(10.0,0.0,13.0 , 3),
+                new Process(14.0,9.0,3.0 , 4)
+        };
+
+        gantChart.preEmptivePriority(processes);
+        //check waiting times
+        assertEquals(processes[0].waitingTime,0.0);
+        assertEquals(processes[1].waitingTime,0.0);
+        assertEquals(processes[2].waitingTime,15.0);
+        assertEquals(processes[3].waitingTime,30.0);
+        assertEquals(processes[4].waitingTime,3.0);
+        //check turnaround times
+        assertEquals(processes[0].turnaroundTime,3.0);
+        assertEquals(processes[1].turnaroundTime,4.0);
+        assertEquals(processes[2].turnaroundTime,24.0);
+        assertEquals(processes[3].turnaroundTime,40.0);
+        assertEquals(processes[4].turnaroundTime,17.0);
+
+        assertEquals(gantChart.getAvgTurnAroundTime(),17.6);
+        assertEquals(gantChart.getAvgWaitingTime(),9.6);
+    }
+    @Test
     public void PreEmptivePriorityLectureWorks() {
         GantChart gantChart = new GantChart();
         //from lecture slides

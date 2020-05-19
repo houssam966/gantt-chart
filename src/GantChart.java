@@ -31,26 +31,26 @@ public class GantChart {
         //OR comment out the previous section and input your processes here
         //arguments: duration, arrival, priority, id
         Process [] processes = {
-                new Process(5.0,7.0,1.0, 0),
-                new Process(14.0,11.0,10.0, 1),
-                new Process(13.0,15.0,14.0, 2),
-                new Process(9.0,0.0,2.0 , 3),
-                new Process(5.0,21.0,8.0 , 4)
+                new Process(3.0,9.0,1.0, 0),
+                new Process(4.0,3.0,4.0, 1),
+                new Process(9.0,11.0,12.0, 2),
+                new Process(10.0,0.0,13.0 , 3),
+                new Process(14.0,9.0,3.0 , 4)
         };
         
       
-        // Available Algorithms:
-        //FCFS = firstComeFirstServe
-        //SJF = shortestJobFirst
-        //PESR = preEmptiveShortestRemainingTimeFirst
-        //NPEP = nonPreEmptivePriority
-        //PEP = preEmptivePriority
-        //RR = roundRobin
+        /** Available Algorithms:
+         * FCFS = firstComeFirstServe
+         * SJF = shortestJobFirst
+         * PESR = preEmptiveShortestRemainingTimeFirst
+         * NPEP = nonPreEmptivePriority
+         * PEP = preEmptivePriority
+         * RR = roundRobin
+         **/
+        String processName = "PEP";
+        int quantumNumber = 10;
 
-        String processName = "FCFS";
-        int quantumNumber = 5;
-
-        switch (processName) {
+        switch (processName.toUpperCase()) {
             case "FCFS":
                 gantChart.firstComeFirstServe(processes);
                 break;
@@ -157,7 +157,8 @@ public class GantChart {
             //if a process finished in the previous iteration, choose a new process from the ready queue
             if(done){
                 for (int j = 0; j < readyQueue.size(); j++) {
-                    if(readyQueue.get(j).timeLeft < current.timeLeft){
+                    if((readyQueue.get(j).timeLeft < current.timeLeft && readyQueue.get(j).getArrival() <= currentTime)
+                            || (current.getArrival() > currentTime && readyQueue.get(j).getArrival() <= currentTime)){
                         current = readyQueue.get(j);
                     }
                 }
@@ -229,10 +230,10 @@ public class GantChart {
         for (int i = 1; i < n; i++) {
             currentTime = processes[i - 1].finish;
             double low = processes[i].getDuration();
-
             //find process with shortest duration and has already arrived
             for (int j = i; j < n; j++) {
-                if (currentTime >= processes[j].getArrival() && low >= processes[j].getDuration()) {
+                if (currentTime >= processes[j].getArrival() && low >= processes[j].getDuration()
+                        || (processes[val].getArrival() > currentTime && processes[j].getArrival() <= currentTime)) {
                     low = processes[j].getDuration();
                     val = j;
                 }
@@ -255,7 +256,6 @@ public class GantChart {
 
     public void preEmptivePriority(Process[] processes) {
         System.out.println("RUNNING PRE-EMPTIVE PRIORITY(lower number higher priority)");
-
         double currentTime = 0;
 
         ArrayList<Process> processArrayList = new ArrayList<>(Arrays.asList(processes));
@@ -271,7 +271,8 @@ public class GantChart {
             //if a process finished in the previous iteration, choose a new process from the ready queue
             if(done){
                 for (int j = 0; j < readyQueue.size(); j++) {
-                    if(readyQueue.get(j).getPriority() < current.getPriority()){
+                    if((readyQueue.get(j).getPriority() < current.getPriority() && readyQueue.get(j).getArrival() <= currentTime)
+                            || (current.getArrival() > currentTime && readyQueue.get(j).getArrival() <= currentTime)) {
                         current = readyQueue.get(j);
                     }
                 }

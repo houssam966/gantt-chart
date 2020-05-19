@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Sorter {
 
     public void sortByArrival(Process [] processes){
@@ -12,6 +14,16 @@ public class Sorter {
                 }
             }
         }
+    }
+    public Process getProcessWithLowestArrival(ArrayList<Process> processes){
+        Process toReturn = processes.get(0);
+        //bubble sort
+        for (int i = 1; i < processes.size() - 1; i++) {
+            if(processes.get(i).getArrival() < toReturn.getArrival()){
+                toReturn  = processes.get(i);
+            }
+        }
+        return toReturn;
     }
 
     public void sortByPriority(Process [] processes){
